@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
+import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
 
 const AddLog = () => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
 	const [tech, setTech] = useState('');
-	console.log(message, attention, tech);
 
-	const submitForm = () => {};
+	const submitForm = () => {
+		if (message === '' || tech === '')
+			M.toast({ html: 'Please Add Message and Technician' });
+		else {
+			console.log(message, tech, attention);
+			setMessage('');
+			setAttention(false);
+			setTech('');
+			M.toast({ html: 'Log Added Successfully...' });
+		}
+	};
 
 	return (
 		<div id='add-log' className='modal' style={modalStyle}>
@@ -57,17 +67,20 @@ const AddLog = () => {
 						</label>
 					</div>
 				</div>
-			</div>
-			<div className='modal-footer'>
-				<button
-					class='btn waves-effect waves-light blue modal-close'
-					type='submit'
-					name='action'
-					onSubmit={submitForm}
-				>
-					Submit
-					<i class='material-icons right'>send</i>
-				</button>
+
+				<div className='row'>
+					<div className='input-feild col s12'>
+						<button
+							className='btn waves-effect waves-light blue modal-close secondary-content'
+							type='submit'
+							name='action'
+							onClick={submitForm}
+						>
+							Add Log
+							<i className='material-icons right'>send</i>
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -12,7 +12,7 @@ const FloatingButton = () => {
 			<ul>
 				<li>
 					<a
-						href='#delete-technician'
+						href='#list-technician'
 						className='btn-floating green modal-trigger'
 					>
 						<i className='material-icons'>person</i>

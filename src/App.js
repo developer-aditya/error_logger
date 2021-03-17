@@ -6,7 +6,7 @@ import SearchBar from './components/layouts/SearchBar';
 
 import AddLog from './components/modals/AddLog';
 import AddTechnician from './components/modals/AddTechnician';
-import DeleteTechnician from './components/modals/DeleteTechnician';
+import ListTechnician from './components/modals/ListTechnician';
 
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import M from '../node_modules/materialize-css/dist/js/materialize.min';
@@ -34,7 +34,7 @@ const App = () => {
 				<Log />
 				<AddLog />
 				<AddTechnician />
-				<DeleteTechnician />
+				<ListTechnician />
 			</div>
 		</div>
 	);
