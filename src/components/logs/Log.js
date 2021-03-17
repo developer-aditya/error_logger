@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Spinner from '../layouts/Spinner.js';
+import Preloader from '../layouts/Preloader';
 import axios from 'axios';
+import LogItem from './LogItem.js';
 
 const Log = () => {
 	const [logs, setLogs] = useState([]);
@@ -27,19 +28,15 @@ const Log = () => {
 		}
 	};
 
-	if (loading) return <Spinner />;
+	if (loading) return <Preloader />;
 
 	return (
-		<ul className='collection-with-header'>
+		<ul className='collection with-header'>
 			<li className='collection-header'>
 				<h4 className='center'>System Logs</h4>
 			</li>
 			{logs.length > 0 ? (
-				logs.map((log) => (
-					<li className='collection-item' key={log.id}>
-						{log.message}
-					</li>
-				))
+				logs.map((log) => <LogItem log={log} key={log.id} />)
 			) : (
 				<p className='center'>No Logs to show...</p>
 			)}
