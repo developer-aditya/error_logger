@@ -87,7 +87,7 @@ const AddLog = () => {
 };
 
 const modalStyle = {
-	width: '75%',
+	width: '60%',
 	height: '75%',
 };
 

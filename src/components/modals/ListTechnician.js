@@ -23,7 +23,6 @@ const ListTechnician = () => {
 			const res = await axios(options);
 			setTechs(res.data);
 			setLoading(false);
-			console.log(res.data);
 		} catch (err) {
 			setLoading(false);
 		}

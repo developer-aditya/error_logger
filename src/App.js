@@ -8,6 +8,9 @@ import AddLog from './components/modals/AddLog';
 import AddTechnician from './components/modals/AddTechnician';
 import ListTechnician from './components/modals/ListTechnician';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import M from '../node_modules/materialize-css/dist/js/materialize.min';
 
@@ -27,16 +30,18 @@ const App = () => {
 	}, []);
 
 	return (
-		<div className='App'>
-			<SearchBar />
-			<div className='container'>
-				<FloatingButton />
-				<Log />
-				<AddLog />
-				<AddTechnician />
-				<ListTechnician />
+		<Provider store={store}>
+			<div className='App'>
+				<SearchBar />
+				<div className='container'>
+					<FloatingButton />
+					<Log />
+					<AddLog />
+					<AddTechnician />
+					<ListTechnician />
+				</div>
 			</div>
-		</div>
+		</Provider>
 	);
 };
 
