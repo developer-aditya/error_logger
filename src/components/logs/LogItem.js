@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LogItem = ({ log }) => {
 	const date = new Date(log.date);
@@ -25,6 +26,10 @@ const LogItem = ({ log }) => {
 			</a>
 		</li>
 	);
+};
+
+LogItem.propTypes = {
+	log: PropTypes.object.isRequired,
 };
 
 export default LogItem;

@@ -1,4 +1,9 @@
-import { GET_LOGS, SET_LOADING, LOGS_ERROR } from '../actions/types.js';
+import {
+	GET_LOGS,
+	SET_LOADING,
+	ADD_LOGS,
+	LOGS_ERROR,
+} from '../actions/types.js';
 
 const intialState = {
 	logs: null,
@@ -13,6 +18,12 @@ const logsReducer = (state = intialState, action) => {
 			return { ...state, loading: action.payload };
 		case GET_LOGS:
 			return { ...state, logs: action.payload, error: null };
+		case ADD_LOGS:
+			return {
+				...state,
+				logs: [...state.logs, action.payload],
+				error: null,
+			};
 		case LOGS_ERROR:
 			return { ...state, error: action.payload };
 		default:

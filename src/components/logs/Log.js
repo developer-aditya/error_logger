@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Preloader from '../layouts/Preloader';
 import LogItem from './LogItem.js';
 
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { getLogs } from '../../actions/logsAction';
 
@@ -27,6 +29,11 @@ const Log = (props) => {
 			)}
 		</ul>
 	);
+};
+
+Log.propTypes = {
+	logsState: PropTypes.object.isRequired,
+	getLogs: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({ logsState: state.logs });

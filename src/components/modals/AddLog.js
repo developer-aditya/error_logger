@@ -1,18 +1,32 @@
 import React, { useState } from 'react';
+
+import { connect } from 'react-redux';
+import { addLogs } from '../../actions/logsAction';
+
+import PropTypes from 'prop-types';
+
 import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
 
-const AddLog = () => {
+const AddLog = (props) => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
 	const [tech, setTech] = useState('');
 
+	// state reset works but form does not get reset
 	const submitForm = () => {
 		if (message === '' || tech === '')
 			M.toast({ html: 'Please Add Message and Technician' });
 		else {
-			console.log(message, tech, attention);
+			const newLog = {
+				message,
+				attention,
+				tech,
+				date: new Date(Date.now()),
+			};
+			props.addLogs(newLog);
 			setMessage('');
 			setAttention(false);
+			document.getElementById('tech').value = '0';
 			setTech('');
 			M.toast({ html: 'Log Added Successfully...' });
 		}
@@ -42,7 +56,7 @@ const AddLog = () => {
 							onChange={(e) => {
 								setTech(e.target.value);
 							}}
-							defaultValue={'0'}
+							value={'0'}
 						>
 							<option value='0' disabled>
 								Select Technician
@@ -86,9 +100,15 @@ const AddLog = () => {
 	);
 };
 
+AddLog.propTypes = {
+	addLogs: PropTypes.func.isRequired,
+};
+
 const modalStyle = {
 	width: '60%',
 	height: '75%',
 };
 
-export default AddLog;
+export default connect(null, { addLogs })(AddLog);
+
+// mapStateToProps will be null as there is no use of app level state in this component, only action is used
