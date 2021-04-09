@@ -20,7 +20,7 @@ const Log = (props) => {
 			<li className='collection-header'>
 				<h4 className='center'>System Logs</h4>
 			</li>
-			{props.logsState.logs !== null ? (
+			{props.logsState.logs.length !== 0 ? (
 				props.logsState.logs.map((log) => (
 					<LogItem log={log} key={log.id} />
 				))

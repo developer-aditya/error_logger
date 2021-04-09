@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TechnicianItem = ({ tech }) => {
 	return (
@@ -9,6 +10,10 @@ const TechnicianItem = ({ tech }) => {
 			</a>
 		</li>
 	);
+};
+
+TechnicianItem.propTypes = {
+	tech: PropTypes.object.isRequired,
 };
 
 export default TechnicianItem;

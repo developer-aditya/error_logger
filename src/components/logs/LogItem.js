@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LogItem = ({ log }) => {
+import { deleteLogs, setCurrent } from '../../actions/logsAction';
+import { connect } from 'react-redux';
+import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
+
+const LogItem = ({ log, deleteLogs, setCurrent }) => {
 	const date = new Date(log.date);
+	const deleteLogsInComponent = (id) => {
+		deleteLogs(id);
+		M.toast({ html: 'Log Deleted Sucessfully...' });
+	};
+	const setCurrentInComponent = (log) => {
+		setCurrent(log);
+	};
+
 	return (
 		<li className='collection-item'>
 			<div>
 				<a
-					href='#add-log'
+					href='#update-log'
 					className={`modal-trigger ${
 						log.attention ? 'red-text' : 'blue-text'
 					}`}
+					onClick={(e) => setCurrentInComponent(log)}
 				>
 					{log.message}
 				</a>
@@ -21,7 +34,11 @@ const LogItem = ({ log }) => {
 				by <span className='black-text'>{log.tech}</span> on{' '}
 				{date.toLocaleString()}
 			</span>
-			<a href='#delete-log' className='secondary-content'>
+			<a
+				href='#delete-log'
+				className='secondary-content'
+				onClick={(e) => deleteLogsInComponent(log.id)}
+			>
 				<i className='material-icons grey-text'>delete</i>
 			</a>
 		</li>
@@ -30,6 +47,8 @@ const LogItem = ({ log }) => {
 
 LogItem.propTypes = {
 	log: PropTypes.object.isRequired,
+	deleteLogs: PropTypes.func.isRequired,
+	setCurrent: PropTypes.func.isRequired,
 };
 
-export default LogItem;
+export default connect(null, { deleteLogs, setCurrent })(LogItem);

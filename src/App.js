@@ -5,6 +5,7 @@ import FloatingButton from './components/layouts/FloatingButton';
 import SearchBar from './components/layouts/SearchBar';
 
 import AddLog from './components/modals/AddLog';
+import UpdateLog from './components/modals/UpdateLog';
 import AddTechnician from './components/modals/AddTechnician';
 import ListTechnician from './components/modals/ListTechnician';
 
@@ -37,6 +38,7 @@ const App = () => {
 					<FloatingButton />
 					<Log />
 					<AddLog />
+					<UpdateLog />
 					<AddTechnician />
 					<ListTechnician />
 				</div>

@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { addLogs } from '../../actions/logsAction';
+import { updateLogs } from '../../actions/logsAction';
 
 import PropTypes from 'prop-types';
+import M from 'materialize-css/dist/js/materialize.min';
 
-import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
-
-const AddLog = (props) => {
+const UpdateLog = ({ current, updateLogs }) => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
 	const [tech, setTech] = useState('');
+
+	useEffect(() => {
+		if (JSON.stringify(current) !== '{}') {
+			setMessage(current.message);
+			setTech(current.tech);
+			setAttention(current.attention);
+		}
+	}, [current]);
 
 	// state reset works but form does not get reset
 	const submitForm = () => {
@@ -22,28 +28,29 @@ const AddLog = (props) => {
 				attention,
 				tech,
 				date: new Date(Date.now()),
+				id: current.id,
 			};
-			props.addLogs(newLog);
+			updateLogs(newLog);
 			setMessage('');
 			setAttention(false);
 			document.getElementById('tech').value = '0';
 			setTech('');
-			M.toast({ html: 'Log Added Successfully...' });
+			M.toast({ html: 'Log Updated Successfully...' });
 		}
 	};
 
 	return (
-		<div id='add-log' className='modal' style={modalStyle}>
+		<div id='update-log' className='modal' style={modalStyle}>
 			<div className='modal-content'>
-				<h4>Enter System Log</h4>
+				<h4>Update System Log</h4>
 				<br />
 				<div className='row '>
 					<div className='input-feild col s12'>
-						<label htmlFor='message'>Log Message</label>
+						<label htmlFor='message-update'>Log Message</label>
 						<input
 							type='text'
-							name='message'
-							id='message'
+							name='message-update'
+							id='message-update'
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
 						/>
@@ -52,8 +59,8 @@ const AddLog = (props) => {
 				<div className='row'>
 					<div className='input-field col s12'>
 						<select
-							name='tech'
-							id='tech'
+							name='tech-update'
+							id='tech-update'
 							onChange={(e) => {
 								setTech(e.target.value);
 							}}
@@ -66,16 +73,16 @@ const AddLog = (props) => {
 							<option value='2'>Option 2</option>
 							<option value='3'>Option 3</option>
 						</select>
-						<label htmlFor='tech'>Technician</label>
+						<label htmlFor='tech-update'>Technician</label>
 					</div>
 				</div>
 				<div className='row'>
 					<div className='input-feild col s12'>
-						<label htmlFor='attention'>
+						<label htmlFor='attention-update'>
 							<input
 								type='checkbox'
-								name='attention'
-								id='attention'
+								name='attention-update'
+								id='attention-update'
 								checked={attention}
 								onChange={(e) => setAttention(!attention)}
 							/>
@@ -92,7 +99,7 @@ const AddLog = (props) => {
 							name='action'
 							onClick={submitForm}
 						>
-							Add Log
+							Update Log
 							<i className='material-icons right'>send</i>
 						</button>
 					</div>
@@ -102,15 +109,18 @@ const AddLog = (props) => {
 	);
 };
 
-AddLog.propTypes = {
-	addLogs: PropTypes.func.isRequired,
-};
-
 const modalStyle = {
 	width: '60%',
 	height: '75%',
 };
 
-export default connect(null, { addLogs })(AddLog);
+UpdateLog.propTypes = {
+	updateLogs: PropTypes.func.isRequired,
+	current: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({ current: state.logs.current });
+
+export default connect(mapStateToProps, { updateLogs })(UpdateLog);
 
 // mapStateToProps will be null as there is no use of app level state in this component, only action is used
