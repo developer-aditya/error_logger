@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
-import { addTechs } from '../../actions/techsAction';
+import { addTechs } from '../../../actions/techsAction';
 
 import PropTypes from 'prop-types';
-import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
+import M from '../../../../node_modules/materialize-css/dist/js/materialize.min';
 
 const AddTechnician = ({ addTechs }) => {
 	const [firstName, setFirstName] = useState('');

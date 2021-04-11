@@ -4,10 +4,10 @@ import Log from './components/logs/Log';
 import FloatingButton from './components/layouts/FloatingButton';
 import SearchBar from './components/layouts/SearchBar';
 
-import AddLog from './components/modals/AddLog';
-import UpdateLog from './components/modals/UpdateLog';
-import AddTechnician from './components/modals/AddTechnician';
-import ListTechnician from './components/modals/ListTechnician';
+import AddLog from './components/modals/log/AddLog';
+import UpdateLog from './components/modals/log/UpdateLog';
+import AddTechnician from './components/modals/tech/AddTechnician';
+import ListTechnician from './components/modals/tech/ListTechnician';
 
 import { Provider } from 'react-redux';
 import store from './store';

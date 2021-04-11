@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
-import { getTechs } from '../../actions/techsAction';
+import { getTechs } from '../../../actions/techsAction';
 
 import PropTypes from 'prop-types';
 

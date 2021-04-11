@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { getTechs, deleteTechs } from '../../actions/techsAction';
+import { getTechs, deleteTechs } from '../../../actions/techsAction';
 
 import PropTypes from 'prop-types';
-import Preloader from '../layouts/Preloader';
+import Preloader from '../../layouts/Preloader';
 
 const TechnicianItem = ({
 	techs: { techs, loading },

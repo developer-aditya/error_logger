@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import TechSelectOption from './TechSelectOptions';
+import React, { useState } from 'react';
+import TechSelectOptions from './TechSelectOptions';
 
 import { connect } from 'react-redux';
-import { updateLogs } from '../../actions/logsAction';
+import { addLogs } from '../../../actions/logsAction';
 
 import PropTypes from 'prop-types';
-import M from 'materialize-css/dist/js/materialize.min';
+import M from '../../../../node_modules/materialize-css/dist/js/materialize.min';
 
-const UpdateLog = ({ current, updateLogs }) => {
+const AddLog = (props) => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
 	const [tech, setTech] = useState('');
-
-	useEffect(() => {
-		if (JSON.stringify(current) !== '{}') {
-			setMessage(current.message);
-			setTech(current.tech);
-			setAttention(current.attention);
-		}
-	}, [current]);
 
 	// state reset works but form does not get reset
 	const submitForm = () => {
@@ -30,28 +22,28 @@ const UpdateLog = ({ current, updateLogs }) => {
 				attention,
 				tech,
 				date: new Date(Date.now()),
-				id: current.id,
 			};
-			updateLogs(newLog);
+			props.addLogs(newLog);
 			setMessage('');
 			setAttention(false);
+			document.getElementById('tech').value = '0';
 			setTech('');
-			M.toast({ html: 'Log Updated Successfully...' });
+			M.toast({ html: 'Log Added Successfully...' });
 		}
 	};
 
 	return (
-		<div id='update-log' className='modal' style={modalStyle}>
+		<div id='add-log' className='modal' style={modalStyle}>
 			<div className='modal-content'>
-				<h4>Update System Log</h4>
+				<h4>Enter System Log</h4>
 				<br />
 				<div className='row '>
 					<div className='input-feild col s12'>
-						<label htmlFor='message-update'>Log Message</label>
+						<label htmlFor='message'>Log Message</label>
 						<input
 							type='text'
-							name='message-update'
-							id='message-update'
+							name='message'
+							id='message'
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
 						/>
@@ -60,29 +52,29 @@ const UpdateLog = ({ current, updateLogs }) => {
 				<div className='row'>
 					<div className='input-field col s12'>
 						<select
-							name='tech-update'
-							id='tech-update'
+							name='tech'
+							id='tech'
 							className='browser-default'
 							onChange={(e) => {
 								setTech(e.target.value);
 							}}
-							value={tech}
+							defaultValue={'0'}
 						>
-							<option key={0} value='0' disabled>
+							<option value='0' disabled key={0}>
 								Select Technician
 							</option>
-							<TechSelectOption />
+							<TechSelectOptions />
 						</select>
-						{/* <label htmlFor='tech-update'>Technician</label> */}
+						{/* <label htmlFor='tech'>Technician</label> */}
 					</div>
 				</div>
 				<div className='row'>
 					<div className='input-feild col s12'>
-						<label htmlFor='attention-update'>
+						<label htmlFor='attention'>
 							<input
 								type='checkbox'
-								name='attention-update'
-								id='attention-update'
+								name='attention'
+								id='attention'
 								checked={attention}
 								onChange={(e) => setAttention(!attention)}
 							/>
@@ -99,7 +91,7 @@ const UpdateLog = ({ current, updateLogs }) => {
 							name='action'
 							onClick={submitForm}
 						>
-							Update Log
+							Add Log
 							<i className='material-icons right'>send</i>
 						</button>
 					</div>
@@ -109,20 +101,15 @@ const UpdateLog = ({ current, updateLogs }) => {
 	);
 };
 
+AddLog.propTypes = {
+	addLogs: PropTypes.func.isRequired,
+};
+
 const modalStyle = {
 	width: '60%',
 	height: '75%',
 };
 
-UpdateLog.propTypes = {
-	updateLogs: PropTypes.func.isRequired,
-	current: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-	current: state.logs.current,
-});
-
-export default connect(mapStateToProps, { updateLogs })(UpdateLog);
+export default connect(null, { addLogs })(AddLog);
 
 // mapStateToProps will be null as there is no use of app level state in this component, only action is used
