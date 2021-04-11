@@ -59,7 +59,6 @@ const AddLog = (props) => {
 								setTech(e.target.value);
 							}}
 							defaultValue={'0'}
-							// value={'0'}
 						>
 							<option value='0' disabled key={0}>
 								Select Technician

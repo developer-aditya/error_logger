@@ -48,7 +48,7 @@ export const addTechs = (newTechs) => async (dispatch) => {
 };
 
 // Deleting all logs from DB
-export const deleteLogs = (id) => async (dispatch) => {
+export const deleteTechs = (id) => async (dispatch) => {
 	try {
 		setLoading(true);
 		const options = {
