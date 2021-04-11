@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import Preloader from '../layouts/Preloader';
 import LogItem from './LogItem.js';
 
-import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { getLogs } from '../../actions/logsAction';
+
+import PropTypes from 'prop-types';
 
 const Log = (props) => {
 	useEffect(() => {

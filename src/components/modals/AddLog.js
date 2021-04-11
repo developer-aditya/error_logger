@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import TechSelectOptions from './TechSelectOptions';
 
 import { connect } from 'react-redux';
 import { addLogs } from '../../actions/logsAction';
 
 import PropTypes from 'prop-types';
-
 import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
 
 const AddLog = (props) => {
@@ -54,19 +54,19 @@ const AddLog = (props) => {
 						<select
 							name='tech'
 							id='tech'
+							className='browser-default'
 							onChange={(e) => {
 								setTech(e.target.value);
 							}}
-							value={'0'}
+							defaultValue={'0'}
+							// value={'0'}
 						>
-							<option value='0' disabled>
+							<option value='0' disabled key={0}>
 								Select Technician
 							</option>
-							<option value='1'>Option 1</option>
-							<option value='2'>Option 2</option>
-							<option value='3'>Option 3</option>
+							<TechSelectOptions />
 						</select>
-						<label htmlFor='tech'>Technician</label>
+						{/* <label htmlFor='tech'>Technician</label> */}
 					</div>
 				</div>
 				<div className='row'>

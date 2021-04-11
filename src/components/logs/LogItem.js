@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { deleteLogs, setCurrent } from '../../actions/logsAction';
 import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
 import M from '../../../node_modules/materialize-css/dist/js/materialize.min';
 
 const LogItem = ({ log, deleteLogs, setCurrent }) => {

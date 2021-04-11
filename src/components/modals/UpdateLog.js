@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import TechSelectOption from './TechSelectOptions';
+
 import { connect } from 'react-redux';
 import { updateLogs } from '../../actions/logsAction';
 
@@ -33,7 +35,6 @@ const UpdateLog = ({ current, updateLogs }) => {
 			updateLogs(newLog);
 			setMessage('');
 			setAttention(false);
-			document.getElementById('tech').value = '0';
 			setTech('');
 			M.toast({ html: 'Log Updated Successfully...' });
 		}
@@ -61,19 +62,18 @@ const UpdateLog = ({ current, updateLogs }) => {
 						<select
 							name='tech-update'
 							id='tech-update'
+							className='browser-default'
 							onChange={(e) => {
 								setTech(e.target.value);
 							}}
-							value={'0'}
+							value={tech}
 						>
-							<option value='0' disabled>
+							<option key={0} value='0' disabled>
 								Select Technician
 							</option>
-							<option value='1'>Option 1</option>
-							<option value='2'>Option 2</option>
-							<option value='3'>Option 3</option>
+							<TechSelectOption />
 						</select>
-						<label htmlFor='tech-update'>Technician</label>
+						{/* <label htmlFor='tech-update'>Technician</label> */}
 					</div>
 				</div>
 				<div className='row'>
@@ -119,7 +119,9 @@ UpdateLog.propTypes = {
 	current: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ current: state.logs.current });
+const mapStateToProps = (state) => ({
+	current: state.logs.current,
+});
 
 export default connect(mapStateToProps, { updateLogs })(UpdateLog);
 
