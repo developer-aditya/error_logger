@@ -25,30 +25,37 @@
     {
       "message": "Changed network card in server 007",
       "attention": false,
-      "tech": "1",
-      "date": "2021-04-09T19:43:04.060Z",
+      "tech": "Aditya Singh",
+      "date": "2021-04-11T19:21:06.533Z",
       "id": 1
     },
     {
       "message": "Fixed hard drive on workstation 002",
       "attention": false,
-      "tech": "John Doe",
-      "date": "2021-04-09T14:07:19.771Z",
+      "tech": "Deepak Patidar",
+      "date": "2021-04-11T19:22:05.162Z",
       "id": 2
     },
     {
       "message": "1122 wireless down",
       "attention": true,
-      "tech": "Sara Wilson",
-      "date": "2021-04-09T15:53:23.678Z",
+      "tech": "Ayush Manker",
+      "date": "2021-04-11T19:22:09.328Z",
       "id": 3
     },
     {
       "message": "Workstation 026 is up and running",
       "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2021-04-09T18:58:28.465Z",
+      "tech": "Ayush Manker",
+      "date": "2021-04-11T19:22:30.031Z",
       "id": 4
+    },
+    {
+      "message": "gy",
+      "attention": false,
+      "tech": "Ansh Shrivastava",
+      "date": "2021-04-11T19:21:00.789Z",
+      "id": 5
     }
   ]
 }
