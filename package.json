@@ -7,6 +7,9 @@
 		"@testing-library/react": "^11.2.5",
 		"@testing-library/user-event": "^12.8.3",
 		"axios": "^0.21.1",
+		"concurrently": "^6.2.0",
+		"express": "^4.17.1",
+		"json-server": "^0.16.3",
 		"materialize-css": "^1.0.0-rc.2",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
@@ -18,9 +21,9 @@
 		"web-vitals": "^1.1.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "concurrently \"react-scripts build\" \"node server\"",
+		"dev": "concurrently \"react-scripts start\" \"npm run json-server\"",
 		"json-server": "json-server --watch db.json --port 5000",
-		"dev": "concurrently \"npm start\" \"npm run json-server\"",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
@@ -42,10 +45,6 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"devDependencies": {
-		"concurrently": "^6.0.0",
-		"json-server": "^0.16.3"
 	},
 	"proxy": "http://localhost:5000"
 }
