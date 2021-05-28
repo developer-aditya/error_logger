@@ -1,66 +1,59 @@
 {
-  "technicians": [
-    {
-      "id": 1,
-      "firstName": "Aditya",
-      "lastName": "Singh"
-    },
-    {
-      "id": 2,
-      "firstName": "Ansh",
-      "lastName": "Shrivastava"
-    },
-    {
-      "id": 3,
-      "firstName": "Ayush",
-      "lastName": "Manker"
-    },
-    {
-      "firstName": "Deepak",
-      "lastName": "Patidar",
-      "id": 6
-    },
-    {
-      "firstName": "Sahitya",
-      "lastName": "Singh",
-      "id": 7
-    }
-  ],
-  "logs": [
-    {
-      "message": "Changed network card in server 007",
-      "attention": false,
-      "tech": "Aditya Singh",
-      "date": "2021-05-25T20:08:29.440Z",
-      "id": 1
-    },
-    {
-      "message": "Fixed hard drive on workstation 002",
-      "attention": false,
-      "tech": "Sahitya Singh",
-      "date": "2021-04-11T20:11:29.700Z",
-      "id": 2
-    },
-    {
-      "message": "1122 wireless down",
-      "attention": true,
-      "tech": "Ayush Manker",
-      "date": "2021-04-11T19:22:09.328Z",
-      "id": 3
-    },
-    {
-      "message": "gy",
-      "attention": true,
-      "tech": "Ansh Shrivastava",
-      "date": "2021-04-11T20:12:08.839Z",
-      "id": 5
-    },
-    {
-      "message": "Changed network 002",
-      "attention": false,
-      "tech": "Deepak Patidar",
-      "date": "2021-04-11T20:10:02.468Z",
-      "id": 6
-    }
-  ]
+	"technicians": [
+		{
+			"id": 1,
+			"firstName": "Aditya",
+			"lastName": "Singh"
+		},
+		{
+			"id": 2,
+			"firstName": "Ansh",
+			"lastName": "Shrivastava"
+		},
+		{
+			"id": 3,
+			"firstName": "Ayush",
+			"lastName": "Manker"
+		},
+		{
+			"firstName": "Deepak",
+			"lastName": "Patidar",
+			"id": 6
+		},
+		{
+			"firstName": "Sahitya",
+			"lastName": "Singh",
+			"id": 7
+		}
+	],
+	"logs": [
+		{
+			"message": "Changed network card in server 007",
+			"attention": false,
+			"tech": "Aditya Singh",
+			"date": "2021-05-25T20:08:29.440Z",
+			"id": 1
+		},
+		{
+			"message": "Fixed hard drive on workstation 002",
+			"attention": false,
+			"tech": "Sahitya Singh",
+			"date": "2021-04-11T20:11:29.700Z",
+			"id": 2
+		},
+		{
+			"message": "1122 wireless down",
+			"attention": true,
+			"tech": "Ayush Manker",
+			"date": "2021-04-11T19:22:09.328Z",
+			"id": 3
+		},
+		{
+			"message": "Changed network 002",
+			"attention": false,
+			"tech": "Deepak Patidar",
+			"date": "2021-04-11T20:10:02.468Z",
+			"id": 6
+		}
+	]
 }
